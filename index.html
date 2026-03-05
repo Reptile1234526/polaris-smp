@@ -281,6 +281,42 @@
         .r-mod   { color: #60a5fa; } .r-help  { color: #34d399; }
         .r-tech  { color: #a78bfa; }
 
+
+        /* ── TEAMS ── */
+        #teams { background: linear-gradient(to bottom, transparent, rgba(56,189,248,.025), transparent); }
+        .teams-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.5rem; }
+
+        .team-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 18px;
+            overflow: hidden;
+            transition: border-color .3s, transform .3s;
+        }
+        .team-card:hover { transform: translateY(-5px); }
+
+        .team-header {
+            padding: 1.2rem 1.6rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .team-snowfall { background: linear-gradient(135deg, rgba(56,189,248,.25), rgba(99,102,241,.2)); border-bottom: 1px solid rgba(56,189,248,.3); }
+        .team-gremlins { background: linear-gradient(135deg, rgba(34,197,94,.2),  rgba(16,185,129,.15)); border-bottom: 1px solid rgba(34,197,94,.3); }
+        .team-idiots   { background: linear-gradient(135deg, rgba(239,68,68,.2),   rgba(251,146,60,.15)); border-bottom: 1px solid rgba(239,68,68,.3); }
+
+        .team-card:has(.team-snowfall):hover { border-color: rgba(56,189,248,.5); }
+        .team-card:has(.team-gremlins):hover { border-color: rgba(34,197,94,.5); }
+        .team-card:has(.team-idiots):hover   { border-color: rgba(239,68,68,.5); }
+
+        .team-name  { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; }
+        .team-count { font-size: .78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+
+        .team-members { padding: 1.2rem 1.6rem; display: flex; flex-direction: column; gap: .75rem; }
+        .team-member  { display: flex; align-items: center; gap: .9rem; }
+        .team-member img {
+            width: 36px; height: 36px; border-radius: 6px;
+            image-rendering: pixelated; flex-shrink: 0;
+            border: 1px solid var(--border);
+        }
+        .team-member span { font-size: .95rem; font-weight: 500; color: var(--text); }
+
         /* ── DISCORD CTA ── */
         #discord { padding: 5rem 2rem; }
         .discord-box {
@@ -339,7 +375,8 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#join">Join</a></li>
-        <li><a href="#rules">Rules</a></li>
+        <li><a href="#teams">Teams</a></li>
+            <li><a href="#rules">Rules</a></li>
         <li><a href="#staff">Staff</a></li>
         <li><a href="#discord">Discord</a></li>
     </ul>
@@ -384,7 +421,7 @@
             <div class="feat-card reveal">
                 <span class="feat-icon">🌑</span>
                 <div class="feat-title">Better End</div>
-                <p class="feat-desc">The End is no longer a barren wasteland. Better End transforms it with new biomes, structures, mobs, and materials to explore.</p>
+                <p class="feat-desc">The End is no longer a barren wasteland. Better End brings <strong>2 new armors</strong>, <strong>1 new ore</strong>, <strong>2 bosses</strong>, and countless new biomes and creatures to explore.</p>
             </div>
             <div class="feat-card reveal">
                 <span class="feat-icon">🌲</span>
@@ -529,6 +566,89 @@
 
 <div class="divider"></div>
 
+
+<!-- ── TEAMS ── -->
+<section id="teams">
+    <div class="container">
+        <div class="sec-head">
+            <div class="sec-tag">Season 1</div>
+            <h2 class="sec-title">Teams &amp; <span>Players</span></h2>
+            <p class="sec-desc">The three teams competing in Polaris SMP Season 1.</p>
+        </div>
+        <div class="teams-grid">
+
+            <div class="team-card reveal">
+                <div class="team-header team-snowfall">
+                    <div class="team-name">Snowfall Syndicate</div>
+                    <div class="team-count">3 members</div>
+                </div>
+                <div class="team-members">
+                    <div class="team-member">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAmUlEQVR4nO3aMQ2AUBAE0WFChxJEoQ5RKKH+SKAghGJ49V52Bdw0xhiESZzESZzESZzESZzESZzESZzESZzESZzESZzESZzESZzESZzESZzESZzESZzESdx8F9iP81HBti6P7t/ulziJkziJkziJk7jp/xOMkziJkziJkziJkziJkziJkziJkziJkziJkziJkziJkzi/HvC1C69ODnk5Hxx2AAAAAElFTkSuQmCC" alt="FlufffiesMC">
+                        <span>FlufffiesMC</span>
+                    </div>
+                    <div class="team-member">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABZ0lEQVR4nO3bPUoDURiF4TeH0QRJSEhkCsXSELC1EHtLN6CdpZ0rsbO0cwXuwR0IgqViEZIQzRgSROIOvivcIsjxaQ9zf6rv/k2t3y1XBJaLRRTTa3fIMfqchXmj2AjzZr0R5tUyHr8wJ8wJc8KcMCfMCXNFqo7mGr9Pw7x/sJPV/uR1Huap+QlzwpwwJ8wJc8KcMFek9supOrrZ/g7z+jL+/vnxLcz3E+uEVP+T4VeYC3PCnDAnzAlzwpwwV3TLxLl7ayurg2Yr6/NftJ/qIL53EOaEOWFOmBPmhDlhrkjV0eub2zA/Pz0O83JvQI7hy1OY390/hPnV5UWYC3PCnDAnzAlzwpwwVzs7OQzfCQ6nFX9Z2WmGuTAnzAlzwpwwJ8wJc7Wjwe4q79w9NhrH7wRTtnt5/yNUs/97gZAwJ8wJc8KcMCfMFR/zvP1+ap2QW8dz63xqfsKcMCfMCXPCnDCndQ9g3X4AB0c87ksylSQAAAAASUVORK5CYII=" alt="Livthequeen21">
+                        <span>Livthequeen21</span>
+                    </div>
+                    <div class="team-member">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABsElEQVR4nOXZLUtDYRjG8etcnrm5I24iTFFQxBcwiMsmv4Fh2MSgYDFM8KWIiMG0YjIZrFaz1SSiUVAwrBgGTuY2ndP5Da6TROT61f/DzQMbnJtzgk5howOh9HSuMp6rLdnfPr9lD3oSshc392VvVyqyzz5SdsIcYY4wR5gjzBHmCHPB2lif3AO25nNywEfYLXsqCmXPDKVkb9XeZX8p12U/udZ7AmGOMEeYI8wR5ghzhLngZmlC7gHpXCQHJHr0cz6VTeobJPRv8F1vyN5u6PcNaH7KTJgjzBHmCHOEOcIcYS6Mcml54OvjS/ZWoyl7KmYNaL/qXi3X9Px+/T6hWZdrDuz/AYQ5whxhjjBHmCPMhc2afs5vX5Zlvzgryf5wqnvfaEb2qdVt2RdXd2UvLYzITpgjzBHmCHOEOcIcYS6cLKzLA71Xe7KnB7Oyz+0dyX53pOePx8yPknqPmV4pyk6YI8wR5ghzhDnCHGEujIYH5IFMsutXL5CP2RPixN0vbk8hzBHmCHOEOcIcYY4wF9wuz8gP6PmdA/xn98eHshPmCHOEOcIcYY4wx7++wF/7Aax+TyB0AmfAAAAAAElFTkSuQmCC" alt="Ryunotfound777">
+                        <span>Ryunotfound777</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card reveal">
+                <div class="team-header team-gremlins">
+                    <div class="team-name">Gremlins</div>
+                    <div class="team-count">4 members</div>
+                </div>
+                <div class="team-members">
+                    <div class="team-member">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABiUlEQVR4nO3aP0tCYRzF8XOPNwVtiChqaAikCItIaGqyoaWXIs0tQe3R0OTa0HtocXFz64/DRajBoUVsKMgw/9U7OHd4hqDjZ/3q797hwnOfR6Ph08EPhHy5qTKGSUn23UoHIVqNddmzpSTo/ghzhDnCHGGOMEeYI8zFce4jaB0dXj/L3mpsIMRN8VFfP9kLmk+YI8wR5ghzhDnCHGEumra35XnAf0eYI8wR5ghzhDnCHGEu2lktyPeApcKcHFC/PJa9etVAiF7/S/b3vv7+W38kO2GOMEeYI8wR5ghzhLmoUlyQ7wH1dk8OmJxnZc8cnspevbiVvXn3KvvD/ET2o61l2QlzhDnCHGGOMEeYI8zFafvlYAO9n6+d7MteDrz87DwgBWGOMEeYI8wR5ghz0ehsU54HjLsvckDMjOzjqd6v39cGsicp/16Y6ox8SifMEeYIc4Q5whxhjjAX47OrP7C4oid86/1+nNMrcSdlndfTgbWUrn9VwOwJIMwR5ghzhDnCHP/6Bv7aL9v6UWsFvXhbAAAAAElFTkSuQmCC" alt="Tidehealer123">
+                        <span>Tidehealer123</span>
+                    </div>
+                    <div class="team-member">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAV0lEQVR4nO3BMQEAAADCoPVP7WsIoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeAMBuAABHgAAAABJRU5ErkJggg==" alt="Viperzombie6925">
+                        <span>Viperzombie6925</span>
+                    </div>
+                    <div class="team-member">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABpElEQVR4nOXZvSvFUQDG8ec+XVxvkcvCerNYlAELcUsGLwOLGwuT0cBiE6VIxMKgLBRXkSwi+QfcyWKUl+EiEmHhP3h+wxnu8HzW7++8bOd0frHhjtY/CDcPzyqjqaFW9tfPH9lryksKOp4wR5gjzBHmCHOEOcJcPOqcrCwpkn1jdlL2galF2Z/ePoLuGbMTo7Jn5lZlJ8wR5ghzhDnCHGGOMBePOoevjzeDFqgoTch+tb8RNP/7w33QeMIcYY4wR5gjzBHmCHOx7pZm+V/g6/M7aIHLrD7nE3VJ2ds7R4LWLyvX9xDCHGGOMEeYI8wR5ghz8dOdZflBoikte6q9P2gD3/kX2fPVKdlzZyeyF91dyE6YI8wR5ghzhDnCHGEuNtiblu8BRxH3hKhzPLu0jRDD0+NB7wldfXo8YY4wR5gjzBHmCHOEudjWyry8B+zuHcoJqpI1QRt4f3kNmj9qfGZkSHbCHGGOMEeYI8wR5ghz8eJf/f9/bWFG9sb6OtnXD85lr66qkH2sp03228e87LnrG9kJc4Q5whxhjjBHmGOhN1Bo/xa3WBqyzvEnAAAAAElFTkSuQmCC" alt="ConnorBhar">
+                        <span>ConnorBhar</span>
+                    </div>
+                    <div class="team-member">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABpElEQVR4nOXavSuFYRzG8eu+OjgcL3lLnGIxGYTllMQxKCV/gCwGg0HKdso/YLOYZLDI5CU2EklmFmWzUPLOwdEp/AfXMzzpDNdn/dbvfp7pvp+XsLB98QvhdHFKZRQK3yilZLJC9oHcmuyEOcIcYY4wR5gjzBHmwszKgTwHvH8W5ID83qLsqVQl4vj4+JK9ejwne01VUnbCHGGOMEeYI8wR5ghzYSjTK88B6ZZGOeD+6VX25oY62cvKy2R/eX6Ldc64uXuUnTBHmCPMEeYIc4Q5wlyiPGIfjtqni8VirAuojHivPz3WLfvq2bXsUfdHmCPMEeYIc4Q5whxhLtFcXxtrn359/5S9rQWxzK0eyp7p65I96v4Ic4Q5whxhjjBHmCPMJaK+v4+Mjsh+/paWfX22Q/bJ5X3ZKzr1+pn+dtl3NndlJ8wR5ghzhDnCHGGOMBeymR75f8DRybEcMLF0KfvGvH5ejxJ3/vBgVnbCHGGOMEeYI8wR5ghz4edqS54DQnWTnpBqlfk3BPynkL/V6+cfZCfMEeYIc4Q5whxhjqW+gFL7A17aS76DwA5XAAAAAElFTkSuQmCC" alt="TomH1775">
+                        <span>TomH1775</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card reveal">
+                <div class="team-header team-idiots">
+                    <div class="team-name">The Idiots</div>
+                    <div class="team-count">3 members</div>
+                </div>
+                <div class="team-members">
+                    <div class="team-member">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABlElEQVR4nOXbvUojYRyF8SfHETRLUilIGrWwSafVdnsBew1bbbGFpVhYqAh2loKwsP3ejeAF6CLsQlZGDPF7zKB3cKYYxOL82ufNO3+myeRl0gFeaeHLcLPNx7kpCtvvOve2X5z9anV9EU6EE+FEOBFOhBPhiqYFJZe2b3V/2n5bP/kB6toP8Pqp1XwLLNsuwolwIpwIJ8KJcCJcZzjctOcB3xYGdoObetb2cnpr+7jyv/cfZ2ZsHzU8R0zKc9tFOBFOhBPhRDgRToQrvg9W7ILFuUW/w+SfzXXdtb2isv1P/WL71cNf27vyzykinAgnwolwIpwIJ8IVTQtG9yPbJ8zZXk6vbT859Of+/a97tLG28cN2EU6EE+FEOBFOhBPhiqqqWp37/3/23/PHB/MNI/jXFHe05ft43/Z+v2+7CCfCiXAinAgnwolwRVn5e1BOx7YPTp8bLuHPC9rq9Xq2r6/v2i7CiXAinAgnwolwIlyn6T3B1YYNfh8t8b5a/a2Rz9tXtotwIpwIJ8KJcCKcPnqAj/YGHs1SuFuhRvkAAAAASUVORK5CYII=" alt="NotAdonut1580">
+                        <span>NotAdonut1580</span>
+                    </div>
+                    <div class="team-member">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAV0lEQVR4nO3BMQEAAADCoPVP7WsIoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeAMBuAABHgAAAABJRU5ErkJggg==" alt="KaputbogYT">
+                        <span>KaputbogYT</span>
+                    </div>
+                    <div class="team-member">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABLklEQVR4nO3bvS5EQRyG8ec8ZoVsKLSi0bsGN+I+qCQqLkShUrgUiUah0SsIK9m1xx3MFJPNknd/7Ttf3X/mzJxh9vQw0mGcz+oNnPCXSTgJJ+EknISTcBKujD+LvhFadX457+u/YhJOwkk4CSfhJJyEK606vdg77pvg46Wr/2J61Df/52s1l3ASTsJJOAkn4SRcGSa71QbbhyfV/OLsoJpfX9113Stcnp9W85vbt2q+fN7sA6oknISTcBJOwkm44evxfvzP3/Vbhq1SzSWchJNwEk7CSTgJV1p1svmIcMX7hNb6WlrvHySchJNwEk7CSTgJV7pH6Kzz4/d7PW/0H3b2u+aXcBJOwkk4CSfhJFxpnZdXfh6f1t8X9P7PsLkXaJBwEk7CSTgJ57oXsG6/LEo4hrfaicMAAAAASUVORK5CYII=" alt="tinfoilhat4015">
+                        <span>tinfoilhat4015</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
 <!-- ── STAFF ── -->
 <section id="staff">
     <div class="container">
