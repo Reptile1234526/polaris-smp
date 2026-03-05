@@ -1,0 +1,50 @@
+name: Fetch Latest Discord Announcement
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # every hour
+  workflow_dispatch:       # allow manual trigger
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest message from Discord
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+        run: |
+          curl -s -H "Authorization: Bot $DISCORD_BOT_TOKEN" \
+            "https://discord.com/api/v10/channels/1468449158775050447/messages?limit=1" \
+            -o raw.json
+          cat raw.json
+
+          python3 - <<'EOF'
+          import json, sys
+          with open('raw.json') as f:
+              data = json.load(f)
+          if not data or not isinstance(data, list):
+              print("No messages found or error:", data, file=sys.stderr)
+              sys.exit(1)
+          msg = data[0]
+          out = {
+              "content": msg.get("content", ""),
+              "author": msg.get("author", {}).get("username", ""),
+              "timestamp": msg.get("timestamp", ""),
+              "id": msg.get("id", "")
+          }
+          with open('announcement.json', 'w') as f:
+              json.dump(out, f)
+          print("Saved:", out["content"][:80])
+          EOF
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add announcement.json
+          git diff --cached --quiet || git commit -m "Update announcement from Discord" && git push

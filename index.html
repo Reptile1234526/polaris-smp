@@ -190,6 +190,25 @@
 
         .divider { height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); }
 
+        /* ── ANNOUNCEMENT ── */
+        .announcement-box {
+            background: linear-gradient(135deg, rgba(99,102,241,.1), rgba(56,189,248,.06));
+            border: 1px solid rgba(99,102,241,.35);
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .announcement-tag {
+            font-size: .75rem; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--accent); margin-bottom: .9rem;
+        }
+        .announcement-text {
+            font-size: 1.05rem; line-height: 1.7; color: var(--text);
+            white-space: pre-wrap; margin-bottom: .75rem;
+        }
+        .announcement-meta { font-size: .8rem; color: var(--muted); }
+
         /* ── FEATURES ── */
         #features { background: linear-gradient(to bottom, transparent, rgba(129,140,248,.03), transparent); }
 
@@ -404,6 +423,19 @@
     <div class="scroll-cue">
         <span>Explore</span>
         <div class="scroll-cue-line"></div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── ANNOUNCEMENT ── -->
+<section id="announcement" style="padding: 3rem 2rem;">
+    <div class="container">
+        <div id="announcement-box" class="announcement-box" style="display:none">
+            <div class="announcement-tag">📣 &nbsp; Latest from Discord</div>
+            <p id="announcement-text" class="announcement-text"></p>
+            <div id="announcement-meta" class="announcement-meta"></div>
+        </div>
     </div>
 </section>
 
@@ -792,6 +824,18 @@ resize();
 mkStars(220);
 draw();
 window.addEventListener('resize', () => { resize(); mkStars(220); });
+
+// ── ANNOUNCEMENT ──────────────────────────────────────────
+fetch('announcement.json')
+    .then(r => r.ok ? r.json() : null)
+    .then(data => {
+        if (!data || !data.content) return;
+        document.getElementById('announcement-text').textContent = data.content;
+        const date = data.timestamp ? new Date(data.timestamp).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : '';
+        document.getElementById('announcement-meta').textContent = `Posted by ${data.author}${date ? '  ·  ' + date : ''}`;
+        document.getElementById('announcement-box').style.display = 'block';
+    })
+    .catch(() => {});
 
 // ── NAV ───────────────────────────────────────────────────
 window.addEventListener('scroll', () => {
